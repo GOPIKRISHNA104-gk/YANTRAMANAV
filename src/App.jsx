@@ -113,7 +113,7 @@ const ParticleBackground = () => {
 
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       particles.forEach(p => {
         p.x += p.speedX;
         p.y += p.speedY;
@@ -175,14 +175,15 @@ const JoinUsModal = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[500] flex items-center justify-center p-4">
-      <div 
+      <div
         className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-[fadeIn_0.5s_ease-out]"
         onClick={onClose}
       ></div>
 
       <div className="relative w-full max-w-2xl max-h-[90vh] flex flex-col bg-[#050505]/90 backdrop-blur-2xl border border-[#00FFAA]/40 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-12 shadow-[0_0_60px_rgba(0,255,170,0.15)] animate-[scaleZoom_0.5s_cubic-bezier(0.2,1,0.3,1)] overflow-y-auto no-scrollbar">
-        
-        <style dangerouslySetInnerHTML={{__html: `
+
+        <style dangerouslySetInnerHTML={{
+          __html: `
           .no-scrollbar::-webkit-scrollbar { display: none; }
           .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         `}} />
@@ -202,7 +203,7 @@ const JoinUsModal = ({ onClose }) => {
             <p className="font-inter text-[#a0a0a0] text-lg">
               Our team will reach out to you soon.
             </p>
-            <button 
+            <button
               onClick={onClose}
               className="mt-10 font-exo text-sm uppercase tracking-widest px-10 py-3 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
             >
@@ -257,15 +258,15 @@ const JoinUsModal = ({ onClose }) => {
               </div>
 
               <div className="flex flex-col-reverse md:flex-row items-center justify-end gap-4 pt-4">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={onClose}
                   className="w-full md:w-auto font-exo text-sm uppercase tracking-widest px-8 py-3 rounded-xl border border-white/20 text-white hover:bg-white/10 transition-all duration-300"
                 >
                   Close
                 </button>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={formState === 'loading'}
                   className="w-full md:w-auto font-exo text-[13px] md:text-sm uppercase tracking-widest px-8 md:px-10 py-3 rounded-xl border border-[#00FFAA]/40 bg-[#00FFAA]/10 text-[#00FFAA] shadow-[0_0_20px_rgba(0,255,170,0.15)] hover:bg-[#00FFAA]/20 hover:scale-[1.02] hover:shadow-[0_0_35px_rgba(0,255,170,0.4)] transition-all duration-300 flex items-center justify-center font-semibold"
                 >
@@ -324,20 +325,20 @@ function CinematicIntro({ onComplete }) {
   return (
     <>
       <style>{cinematicStyles}</style>
-      
+
       {/* Main Container */}
       <div className={`fixed inset-0 z-[100] w-screen h-screen overflow-hidden bg-black flex flex-col items-center justify-center font-inter transition-opacity duration-1000 ${phase === 'fadeout' ? 'opacity-0' : 'opacity-100'}`}>
-        
+
         {/* Subtle Film Grain Noise Overlay (Maintains cinematic realism) */}
-        <div 
-          className="absolute inset-0 z-40 pointer-events-none opacity-[0.08] mix-blend-overlay" 
+        <div
+          className="absolute inset-0 z-40 pointer-events-none opacity-[0.08] mix-blend-overlay"
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
         />
 
         {/* Background & Dust Particles */}
         {(phase === 'logo' || phase === 'text' || phase === 'fadeout') && (
           <div className="absolute inset-0 z-0 cinematic-bg transition-opacity duration-1000 opacity-100">
-             <ParticleBackground />
+            <ParticleBackground />
           </div>
         )}
 
@@ -355,12 +356,12 @@ function CinematicIntro({ onComplete }) {
 
         {/* Main Interface */}
         <div className="relative z-20 flex flex-col items-center justify-center space-y-12">
-          
+
           {/* Logo Section */}
           {(phase === 'logo' || phase === 'text' || phase === 'fadeout') && (
             <div className="relative flex justify-center items-center">
-              <img 
-                src={logoUrl} 
+              <img
+                src={logoUrl}
                 alt="YANTRAMANAV Core"
                 className="w-32 h-32 md:w-48 md:h-48 object-contain animate-logo opacity-90"
               />
@@ -383,9 +384,9 @@ function CinematicIntro({ onComplete }) {
               </h1>
             )}
           </div>
-          
+
         </div>
-        
+
         {/* Dark Cinematic Vignette */}
         <div className="absolute inset-0 z-30 pointer-events-none bg-[radial-gradient(circle,transparent_50%,rgba(0,0,0,0.95)_100%)]" />
       </div>
@@ -429,7 +430,7 @@ const ProjectCount = () => {
   return (
     <div ref={ref} className="mt-8 inline-flex items-center space-x-6 px-8 py-5 rounded-[24px] bg-white/[0.04] border border-white/10 transition-all duration-500 hover:bg-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:scale-[1.02]">
       <span className="font-inter text-4xl md:text-5xl font-bold text-white tracking-tight">{count}+</span>
-      <span className="font-inter text-sm md:text-base text-white/70 uppercase tracking-widest leading-relaxed font-medium">Projects<br/>Completed</span>
+      <span className="font-inter text-sm md:text-base text-white/70 uppercase tracking-widest leading-relaxed font-medium">Projects<br />Completed</span>
     </div>
   );
 };
@@ -448,7 +449,7 @@ export default function App() {
   useEffect(() => {
     if (showMainApp) {
       setMounted(true);
-      
+
       // Observer for dashboard scroll animation
       const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
@@ -474,9 +475,17 @@ export default function App() {
       {showMainApp && (
         <div className={`min-h-screen bg-[#050505] text-white font-sans relative overflow-x-hidden selection:bg-white/20 transition-opacity duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
           {/* Inject custom fonts and animations */}
-          <style dangerouslySetInnerHTML={{__html: `
+          <style dangerouslySetInnerHTML={{
+            __html: `
             @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600&family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
             
+            html {
+              scroll-behavior: smooth;
+            }
+            body {
+              overflow-x: hidden;
+            }
+
             .font-exo { font-family: 'Exo 2', sans-serif; }
             .font-orbitron { font-family: 'Orbitron', sans-serif; }
             .font-inter { font-family: 'Inter', sans-serif; }
@@ -535,15 +544,15 @@ export default function App() {
           {/* Global Background Elements */}
           <div className="fixed inset-0 bg-grid-pattern pointer-events-none"></div>
           <div className="fixed inset-0 bg-noise pointer-events-none mix-blend-overlay"></div>
-          
+
           {/* Top Navbar */}
           <nav className={`relative z-50 w-full px-6 py-6 md:px-12 flex items-center justify-between transition-opacity duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-            
+
             {/* Left: Logo */}
             <div className="flex-shrink-0 cursor-pointer group">
-              <img 
-                src="https://image2url.com/r2/default/images/1775380993207-3f99cbb1-e11c-472d-86ee-ae7ff98032ec.png" 
-                alt="Yantramanav Logo" 
+              <img
+                src="https://image2url.com/r2/default/images/1775380993207-3f99cbb1-e11c-472d-86ee-ae7ff98032ec.png"
+                alt="Yantramanav Logo"
                 className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
               />
             </div>
@@ -551,8 +560,8 @@ export default function App() {
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center space-x-10">
               {navLinks.map((link) => (
-                <a 
-                  key={link} 
+                <a
+                  key={link}
                   href={`#${link.toLowerCase()}`}
                   className="font-exo text-[13px] uppercase tracking-[0.2em] text-[#a0a0a0] hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
                   onClick={(e) => {
@@ -567,7 +576,7 @@ export default function App() {
 
             {/* Right: Join Us Button (Desktop) */}
             <div className="hidden lg:block">
-              <button 
+              <button
                 onClick={() => setShowJoinModal(true)}
                 className="font-exo text-sm uppercase tracking-widest px-8 py-2.5 rounded-[20px] border border-white/20 bg-transparent text-white transition-all duration-300 hover:bg-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] relative overflow-hidden group"
               >
@@ -576,7 +585,7 @@ export default function App() {
             </div>
 
             {/* Mobile Menu Toggle */}
-            <button 
+            <button
               className="lg:hidden text-white/70 hover:text-white focus:outline-none"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -585,7 +594,7 @@ export default function App() {
           </nav>
 
           {/* Mobile Dropdown Menu */}
-          <div className={`absolute top-[80px] left-0 w-full bg-black/95 backdrop-blur-md border-b border-white/10 flex flex-col items-center justify-center space-y-6 overflow-hidden transition-all duration-500 z-40 ${isMobileMenuOpen ? 'max-h-[400px] py-8 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
+          <div className={`fixed top-[80px] right-0 h-[calc(100vh-80px)] w-[85%] max-w-[320px] bg-black/95 backdrop-blur-xl border-l border-white/10 flex flex-col items-center justify-start pt-12 space-y-8 overflow-y-auto transition-transform duration-500 ease-[cubic-bezier(0.2,1,0.3,1)] z-40 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             {navLinks.map((link) => (
               <a 
                 key={link} 
@@ -602,7 +611,7 @@ export default function App() {
             ))}
             <button 
               onClick={() => { setIsMobileMenuOpen(false); setShowJoinModal(true); }}
-              className="mt-4 font-exo text-sm uppercase tracking-widest px-8 py-2 rounded-[20px] border border-white/20 text-white w-3/4 max-w-[200px] hover:bg-white hover:text-black"
+              className="mt-4 font-exo text-[14px] uppercase tracking-widest px-[20px] py-[10px] w-auto rounded-[20px] border border-white/20 text-white hover:bg-white hover:text-black"
             >
               Join Us
             </button>
@@ -610,16 +619,16 @@ export default function App() {
 
           {/* Main Hero Section */}
           <main className="relative w-full h-[calc(100vh-100px)] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
-            
+
             {/* Central Visual Container */}
             <div className={`relative flex flex-col items-center justify-center w-full max-w-[1000px] mx-auto transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              
+
               {/* Background Glows & HUD Rings */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none top-[-10%]">
-                
+
                 {/* Core Intense Backlight */}
                 <div className="absolute top-[45%] left-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-white rounded-full blur-[100px] md:blur-[130px] animate-pulse-glow origin-center"></div>
-                
+
                 {/* Faint HUD Circular Grid/Outline */}
                 <svg className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-[700px] opacity-[0.07]" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="48" fill="none" stroke="white" strokeWidth="0.2" />
@@ -636,25 +645,28 @@ export default function App() {
                 <img 
                   src="https://image2url.com/r2/default/images/1775380931624-5d783315-40b4-406f-a280-8702d511a2e9.png" 
                   alt="Yantramanav Robot Head" 
-                  className="w-[75%] md:w-[60%] lg:w-[55%] max-w-[500px] object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] animate-float"
+                  className="w-[80%] max-w-[500px] h-auto object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] animate-float m-auto"
                 />
               </div>
 
               {/* Title Text */}
-              <div className="relative z-20 mt-[-5%] md:mt-[-8%] text-center">
-                <h1 className="font-orbitron text-[11vw] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-bold text-white tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.3em] uppercase text-glow-fx ml-[0.15em] sm:ml-[0.25em] md:ml-[0.3em]">
+              <div className="relative z-20 mt-[-5%] md:mt-[-8%] w-full overflow-hidden text-center px-4">
+                <h1 
+                  className="font-orbitron font-bold text-white uppercase text-glow-fx break-words mx-auto tracking-[2px] md:tracking-[0.3em]"
+                  style={{ fontSize: 'clamp(28px, 8vw, 120px)' }}
+                >
                   Yantramanav
                 </h1>
               </div>
-              
+
             </div>
           </main>
-          
+
           {/* Dashboard Section */}
           <section 
             id="dashboard"
             ref={dashboardRef}
-            className={`relative z-20 w-full max-w-[1200px] mx-auto px-6 py-24 pb-48 flex flex-col space-y-24 md:space-y-36 transition-all duration-1000 ${dashVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
+            className={`relative z-20 w-full max-w-[1200px] mx-auto p-[20px] md:px-6 my-[10px] md:my-0 pb-24 md:pb-48 flex flex-col space-y-16 md:space-y-36 transition-all duration-1000 ${dashVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
           >
             {/* 1. ABOUT SECTION */}
             <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-20 items-center justify-between">
@@ -671,14 +683,14 @@ export default function App() {
                 </div>
                 <ProjectCount />
               </div>
-              
+
               {/* Right Side */}
               <div className="w-full lg:w-[48%] relative rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group transition-transform duration-700 ease-out hover:scale-[1.02] border border-white/5 z-10">
                 {/* Subtle overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none"></div>
-                <img 
-                  src="https://image2url.com/r2/default/images/1775392947511-fbe6f154-5324-49b5-ba58-f13a50e652ae.png" 
-                  alt="Yantramanav About" 
+                <img
+                  src="https://image2url.com/r2/default/images/1775392947511-fbe6f154-5324-49b5-ba58-f13a50e652ae.png"
+                  alt="Yantramanav About"
                   className="w-full h-auto object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.05]"
                 />
               </div>
@@ -686,12 +698,12 @@ export default function App() {
 
             {/* 2. OUR COLLABORATIONS */}
             <div className="w-full flex flex-col items-center">
-              
+
               {/* College Branding */}
               <div className="group flex flex-col items-center justify-center mb-20 md:mb-28 transition-all duration-700 hover:scale-[1.02]">
-                <img 
-                  src="https://image2url.com/r2/default/images/1775393988163-ea4ad843-310d-4617-a605-5099cdf0e434.png" 
-                  alt="Prathyusha Engineering College" 
+                <img
+                  src="https://image2url.com/r2/default/images/1775393988163-ea4ad843-310d-4617-a605-5099cdf0e434.png"
+                  alt="Prathyusha Engineering College"
                   className="h-[75px] md:h-[95px] w-auto object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] mb-5"
                 />
                 <span className="font-inter text-[10px] md:text-xs font-semibold text-white/40 uppercase tracking-[0.35em] group-hover:text-white/80 transition-colors duration-500 text-center px-4">
@@ -711,7 +723,7 @@ export default function App() {
 
             {/* 3. OUR WORK & 4. OUR COMMUNITY */}
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 lg:gap-32">
-              
+
               {/* OUR WORK */}
               <div className="flex flex-col space-y-6 md:space-y-8 bg-gradient-to-br from-white/[0.03] to-transparent p-10 md:p-12 rounded-[32px] border border-white/5 transition-all duration-500 hover:border-white/10 hover:bg-white/[0.05]">
                 <h3 className="font-inter font-semibold text-3xl md:text-4xl text-white tracking-tight">Our Work</h3>
@@ -729,21 +741,21 @@ export default function App() {
                   Yantramanav has a strong and growing community of students, alumni, and mentors who support innovation, collaboration, and project development.
                 </p>
               </div>
-              
+
             </div>
 
           </section>
 
           {/* Footer / Contact Section */}
-          <footer 
+          <footer
             id="contact"
             className={`relative z-40 w-full py-12 flex flex-col items-center justify-center space-y-8 border-t border-white/5 bg-[#050505]/80 backdrop-blur-xl transition-all duration-1000 ${dashVisible ? 'opacity-100' : 'opacity-0'}`}
           >
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-16">
               {/* Instagram */}
-              <a 
-                href="https://www.instagram.com/yantramanav_._" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/yantramanav_._"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 text-[#a0a0a0] hover:text-[#00FFAA] transition-all duration-300 group hover:drop-shadow-[0_0_15px_rgba(0,255,170,0.5)]"
               >
@@ -754,8 +766,8 @@ export default function App() {
               </a>
 
               {/* Email */}
-              <a 
-                href="mailto:support@yantramanav.co.in" 
+              <a
+                href="mailto:support@yantramanav.co.in"
                 className="flex items-center space-x-3 text-[#a0a0a0] hover:text-[#00D9FF] transition-all duration-300 group hover:drop-shadow-[0_0_15px_rgba(0,217,255,0.5)]"
               >
                 <div className="p-2.5 rounded-full bg-white/5 group-hover:bg-[#00D9FF]/10 border border-transparent group-hover:border-[#00D9FF]/30 transition-all duration-300">
@@ -764,7 +776,7 @@ export default function App() {
                 <span className="font-inter text-sm md:text-base font-medium tracking-wide">support@yantramanav.co.in</span>
               </a>
             </div>
-            
+
             <div className="font-exo text-[10px] md:text-xs text-white/30 uppercase tracking-[0.3em] text-center px-6">
               © 2026 Yantramanav. All Rights Reserved.
             </div>
